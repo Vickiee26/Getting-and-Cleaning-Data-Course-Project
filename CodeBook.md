@@ -10,5 +10,11 @@
 
 *x_train*, *y_train*, *x_test*, *y_test* are the variables which contain the train and test datasets.
 
+*merged_train* contains the merge table of train dataset and *subject_train* using cbind(). Similarly for *merged_test*
+
+*entire_data* formed by merging *merged_train* and *merged_test* using rbind().
+
+*mean_std_data* formed by patterning match the columns which contains mean, std, subID, actID in it.
+
 
 
