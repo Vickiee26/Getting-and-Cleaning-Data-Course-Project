@@ -47,15 +47,21 @@ mean_std_data <- entire_data[,mean_std]
 str(mean_std_data)
 
 # ------------------------- 3. USING DESCRIPTIVE ACTIVITY NAME ----------------------------------
-# ------------------------- 4. APPROPIATELY LABELING --------------------------------------------
 
 new_merge <- merge(activity, mean_std_data, by='actID')
 names(new_merge)
-summary(new_merge)
+
+
+# ------------------------- 4. APPROPIATELY LABELING --------------------------------------------
+
+names(new_merge) <- gsub("^t","Time", names(new_merge))
+names(new_merge) <- gsub("^f","Frequency", names(new_merge))
+names(new_merge) <- gsub("Acc","Accelerometer", names(new_merge))
+names(new_merge) <- gsub("Gyro", "Gyroscope", names(new_merge))
+names(new_merge) 
 
 # ------------------------- 5. SECOND TIDY DATASET FOR AVERAGE ----------------------------------
 
-library("dplyr")
 second_tidy <- new_merge
 
 second_tidy <-aggregate(.~subID + actID, second_tidy, mean)
